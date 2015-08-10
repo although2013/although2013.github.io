@@ -3,8 +3,8 @@ title: Howard's Blog
 email: althoughghgh@gmail.com
 description: > #
   I never did a day's work in my life, it was all fun. -- Thomas A. Edison
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://although2013.com" # the base hostname & protocol for your site
+baseurl: "/"
+url: "http://although2013.com"
 twitter_username: although13
 github_username:  although2013
 
