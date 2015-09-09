@@ -1,6 +1,7 @@
 
 title = ARGV[0]
 
+
 t = Time.now
 
 name_1 = t.to_s[0..9]
@@ -19,4 +20,4 @@ head
 
 
 
-File.open("_posts/#{name_1}#{name_2}".markdown, "w") { |file| file.puts data }
+File.open("_posts/#{name_1}#{name_2}.markdown", "w") { |file| file.puts data }
