@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Data racing in validation"
+title:  "Data Conditions in Rails/MySQL"
 date:   2015-09-09 18:48:03
 categories: jekyll update
 ---
