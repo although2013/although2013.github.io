@@ -8,8 +8,6 @@ name_2 = title.split.map { |w| "-#{w}" }.join
 
 
 
-
-
 data = <<-head
 ---
 layout: post
