@@ -5,6 +5,7 @@ date:   2015-09-09 18:48:03
 categories: jekyll update
 ---
 
+其实，这还是个家庭作业 `,,Ծ‸Ծ,,`
 
 看了这篇文章[race-conditions-with-duplicate-unique-keys][unique-keys]，讲的是 validation 在 rails 层面和 mysql 层面的差别，
 
@@ -15,7 +16,6 @@ categories: jekyll update
 
 目前是这么理解的，如果不对欢迎打脸：althoughghgh@gmail.com
 
-,,Ծ‸Ծ,,
 
 
 [unique-keys]: http://makandracards.com/makandra/13901-understand-and-fix-race-conditions-with-duplicate-unique-keys-in-rails-mysql

@@ -4,7 +4,6 @@ title:  "Send Global Messages to 1_000_000 Users"
 date:   2015-09-08 21:55:59
 categories: jekyll update
 ---
-version: 5
 
 同样，这也是个家庭作业，目的是向所有的注册用户发送一封站内信。
 
@@ -78,7 +77,7 @@ client = Mysql2::Client.new(
 {% endhighlight %}
 
 my.cnf 可能在这些地方:
-{% highlight shell %}
+{% highlight c %}
 /etc/my.cnf
 /etc/mysql/my.cnf
 /var/lib/mysql/my.cnf
