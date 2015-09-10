@@ -8,7 +8,7 @@ categories: jekyll update
 同样，这也是个家庭作业，目的是向所有的注册用户发送一封站内信。
 
 比较简单的方法就是建一个`messages`表，插入一条站内信，然后每个用户（User）有一个信箱（Inbox），
-向所有用户的信箱中插入一条记录：`:message_id => 1, :user_id => 1, :is_read => false`。
+向所有用户的信箱中都插入一条记录：`:message_id => 1, :user_id => user.id, :is_read => false`。
 
 如果用户有很多的话，就会花上很多的时间了。
 
@@ -21,9 +21,10 @@ categories: jekyll update
 这个 `setbit` 的速度还是很快的，大概没有超过100微秒吧，另外 bitmap 有个限制就是不能超过2^32(512MB）。
 
 {% highlight ruby %}
+  #显示用户未读的全站消息
   <% @messages.each do |msg| %>
-    <%= $redis.getbit("gmsg#{msg.id}", @user.id) %><br>
-    <%= "#{msg.title} : #{msg.body}" %><br><br>
+    <%= "#{msg.title} : #{msg.body}" if 0 == $redis.getbit("gmsg#{msg.id}", @user.id) %>
+    <br><br>
   <% end %>
 {% endhighlight %}
 
