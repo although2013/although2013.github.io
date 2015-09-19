@@ -84,3 +84,6 @@ my.cnf 可能在这些地方:
 /var/lib/mysql/my.cnf
 ...
 {% endhighlight %}
+
+
+另外 Redis 还有 `PUB/SUB` 功能，可以实现订阅某个频道的样子，比较适合发送给很多但不是全部用户消息（我猜的，还没认真看哈哈）
