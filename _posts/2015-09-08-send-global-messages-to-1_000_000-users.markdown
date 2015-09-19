@@ -21,11 +21,11 @@ categories: jekyll update
 这个 `setbit` 的速度还是很快的，大概没有超过100微秒吧，另外 bitmap 有个限制就是不能超过2^32(512MB）。
 
 {% highlight ruby %}
-  #显示用户未读的全站消息
-  <% @messages.each do |msg| %>
-    <%= "#{msg.title} : #{msg.body}" if 0 == $redis.getbit("gmsg#{msg.id}", @user.id) %>
-    <br><br>
-  <% end %>
+#显示用户未读的全站消息
+<% @messages.each do |msg| %>
+  <%= "#{msg.title} : #{msg.body}" if 0 == $redis.getbit("gmsg#{msg.id}", @user.id) %>
+  <br><br>
+<% end %>
 {% endhighlight %}
 
 哦对了，因为搞了100万用户，controller 里记得不要`User.all`了。。
