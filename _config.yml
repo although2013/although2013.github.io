@@ -9,4 +9,4 @@ twitter_username: although13
 github_username:  although2013
 
 # Build settings
-markdown: kramdown
+markdown: Redcarpet
