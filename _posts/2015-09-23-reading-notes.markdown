@@ -49,3 +49,32 @@ Ruby 使用 CSI，不会对文本做任何处理，成为少有的例外。
 str.split(/<.*?>/)   #=>不包括html标签
 str.split(/(<.*?>)/) #=>返回的数组中包含html标签
 ```
+
+#RSA
+这是一个RSA加密的小程序，
+现实中pq的长度为1024位（二进制）
+(pq, e) 为公钥
+(pq, d) 为私钥
+p,q为两个素数
+```ruby
+pq = p * q
+k = n * (p - 1) * (q - 1) + 1
+n为任意正数
+e, d 能使 e*d = k
+```
+
+```ruby
+def rsa(pq, k, mesg)
+  mesg.collect do |x|
+    x**k%pq
+  end
+end
+```
+
+```ruby
+orig = [7, 13, 17, 24]
+encode = rsa(33, 3, orig)
+#=> [13, 19, 29, 30]
+decode = rsa(33, 7, encode)
+#=> [7, 13, 17, 24]
+```
