@@ -60,8 +60,8 @@ con.close
 
 
 另外还遇到一个 “Mysql Server has gone away” 的错误，修改my.cnf  
- - wait_timeout 尽可能大，  
- - max_allowed_packet = 128M（尽可能大）  
+ - `wait_timeout` 尽可能大，  
+ - `max_allowed_packet = 128M`（尽可能大）  
 以及（可能需要）在 ruby 脚本中设置timeout：
 {% highlight ruby %}
 client = Mysql2::Client.new(
