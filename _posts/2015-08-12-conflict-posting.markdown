@@ -73,7 +73,7 @@ end
 首先调用 `update_attributes(*args)` 如果异常，进入 rescue。
 `except(“updated_at”)` 就不显示更新时间的变化，也不输出 lock_version 的变化，其他的都只输出之前版本的值。
 
-![screenshot]({{ site.url }}/images/Screen Shot 2015-08-12 at 3.45.42 PM.png)
+![screenshot]({{ site.url }}/images/ScreenShot.png)
 Screen Shot 2015-08-12 at 3.45.42 PM.png
 
 昨天晚上我还发现了个 gem 叫 `Diffy`，效果类似 GitHub 上的 Diff 页面，挺好看的。
