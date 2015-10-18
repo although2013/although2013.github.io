@@ -25,3 +25,14 @@ categories: jekyll update
 
 另外用法十分丰富，，文档的目录都有一整屏幕。。。  
 贴上 usage 网址：[www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
+
+#键鼠操作
+Linux下模拟键盘鼠标只需要输出到文件，如`/dev/input/eventX`，可以用命令`cat proc/bus/input/devices`查看具体哪个 event 对应鼠标，哪个对应键盘。
+
+不过我看到了一个命令行工具`xdotool`，已经对鼠标键盘自动化操作封装的很好了：
+
+- `xdotool getmouselocation`获取当前鼠标坐标
+- `xdotool click 1`鼠标左键点击
+- `xdotool mousemove --sync #{pos[0]} #{pos[1]}`移动鼠标
+
+
