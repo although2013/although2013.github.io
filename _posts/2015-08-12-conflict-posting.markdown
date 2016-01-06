@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Conflict posting"
+title:  "Conflict Posting"
 date:   2015-08-12 16:40:43
 categories: jekyll update
 ---

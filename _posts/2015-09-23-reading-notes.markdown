@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Reading notes"
+title:  "Reading Notes"
 date:   2015-09-23 20:11:33
 categories: jekyll update
 ---

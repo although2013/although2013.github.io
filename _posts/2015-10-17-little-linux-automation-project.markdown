@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Little linux automation project"
+title:  "Little Linux Automation Project"
 date:   2015-10-17 19:08:34
 categories: jekyll update
 ---

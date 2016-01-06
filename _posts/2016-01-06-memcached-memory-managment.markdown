@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Memcached memory managment"
+title:  "Memcached Memory Managment"
 date:   2016-01-06 23:52:01
 categories: jekyll update
 ---
