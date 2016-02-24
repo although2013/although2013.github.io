@@ -17,13 +17,13 @@ categories: jekyll update
 
 需要注意的是，每个`slab-class`都使用自己的LRU，也就是说，当整个内存池用完，这时来了一个120KB的数据，计算后发现128KB大小的`chunk`最合适（最接近120KB大小），然后就会找出128KB对应的`slab-class`的所有`page`的所有`chunk`中更新时间最久的`chunk`，把它的数据替换掉。即使可能有一个256KB的`chunk`的更新时间更加久远。
 
-###consistent hashing
+### consistent hashing
 一致性哈希，对每个要存入的对象进行哈希，取前四位，当作是16进制的数字，于是对象的哈希值会落在0~65536之间，就像0~12个小时一样围成一个圈，如果你有多台server，给每个server100个点，均匀分布在这个圆圈上，约定对象按某一方向（如逆时针）存入最近的点所属的server上，这样，当某台server挂了，只有少部分的缓存不可访问，大部分缓存仍然可以在逆时针最近的服务器上被访问到。
 
-###LRU
+### LRU
 LRU算法的实现使用到了双向链表和哈希表
 
-```java
+{% highlight java %}
 //double linked list node
 class Node {
     int key;
@@ -36,5 +36,5 @@ class Node {
         this.value = value;
     }
 }
-```
+{% endhighlight %}
 还有两个指针，分别为head和tail，添加和删除Node的时候只需要更改4个指针的指向，不需要移动元素O(1)，另外还有一个hash table来保证get Node的操作也是O(1)。

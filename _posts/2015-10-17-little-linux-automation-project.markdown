@@ -8,7 +8,7 @@ categories: jekyll update
 今天发现了个好玩的东西，我在尝试写一个录制鼠标键盘的操作并输出DSL脚本，之后运行来模拟用户操作的程序，windows API 还是有点复杂，所以想先尝试Linux下，
 
 
-#检测屏幕变化
+# 检测屏幕变化
 我发现了 `imagemagick`，之前见过 Ruby 的一个 gem 好像也叫这个名字，
 这个软件有命令行接口，比如：
 
@@ -26,7 +26,7 @@ categories: jekyll update
 另外用法十分丰富，，文档的目录都有一整屏幕。。。  
 贴上 usage 网址：[www.imagemagick.org/Usage](http://www.imagemagick.org/Usage/)
 
-#键鼠操作
+# 键鼠操作
 Linux下模拟键盘鼠标只需要输出到文件，如`/dev/input/eventX`，可以用命令`cat proc/bus/input/devices`查看具体哪个 event 对应鼠标，哪个对应键盘。
 
 不过我看到了一个命令行工具`xdotool`，已经对鼠标键盘自动化操作封装的很好了：
