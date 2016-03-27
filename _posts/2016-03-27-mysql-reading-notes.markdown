@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Mysql Reading Notes"
+title:  "MySQL Reading Notes"
 date:   2016-02-27 21:18:04
 categories: jekyll update
 ---
