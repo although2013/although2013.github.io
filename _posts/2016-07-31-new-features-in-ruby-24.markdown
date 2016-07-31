@@ -1,13 +1,16 @@
 ---
 layout: post
-title:  "New Features in Ruby 24"
+title:  "New Features in Ruby 2.4"
 date:   2016-07-31 22:48:51
 categories: jekyll update
 ---
 
 本文翻译自 https://blog.blockscore.com/new-features-in-ruby-2-4
 
-# 超级快的 Regexp#match?
+
+---
+
+# 超级快的 `Regexp#match?` 方法
 
 Ruby 2.4 给正则表达式添加了新的 `#match?` 方法，它比任何的 Regexp 方法都快（三倍以上）。
 当你使用 `Regexp#===`、`Regexp#=~` 或 `Regexp#match`时，Ruby 会创建 `$~` 这个全局变量来存放返回的 MatchData ：
@@ -21,14 +24,22 @@ $~                              # => #<MatchData "foo baz" 1:"baz">
 /^foo (\w+)$/ === 'foo qux'     # => true
 $~                              # => #<MatchData "foo qux" 1:"qux">
 {% endhighlight %}
+
 我们的这个 `Regexp#match?` 返回 boolean，避免了生成一个 MatchData 对象或更新全局状态（or updating global state 应该是指避免了更新 `$~` 这个全局变量的意思吧）：
+
 {% highlight ruby %}
 /^foo (\w+)$/.match?('foo wow') # => true
 $~                              # => nil
 {% endhighlight %}
+
 跳过了 `$~` 这个全局变量，Ruby 也就可以避免给 MatchData 去分配内存了。
 
-# `Enumerable` 的新方法 `#sum`
+
+
+---
+
+# Enumerable 的新方法 `#sum`
+
 可以在任意一个 `Enumerable` 对象上调用 `#sum`：
 {% highlight ruby %}
 [1, 1, 2, 3, 5, 8, 13, 21].sum # => 54
@@ -59,7 +70,12 @@ eggs + milk + cheese                       # => #<ShoppingList:0x007f95228261d0 
 {% endhighlight %}
 最后一行的 `ShoppingList.new` 就是提供给 `sum` 的初始值了。
 
+
+
+---
+
 # Dir 和 File 模块的新方法 `empty?`
+
 {% highlight ruby %}
 Dir.empty?('empty_directory')      # => true
 Dir.empty?('directory_with_files') # => false
@@ -72,20 +88,31 @@ File.empty?('empty.txt')           # => true
 
 目前`empty?`方法还不能用在 `Pathname` 上。
 
+
+
+---
+
 # 把已命名的匹配部分抽离出来 `Regexp#named_captures`
 
 Ruby 2.4 中你可以用 `#named_captures` 方法把正则表达式中已命名的部分抽出来，放进一个 Hash 中：
+
 {% highlight ruby %}
 pattern  = /(?<first_name>John) (?<last_name>\w+)/
 pattern.match('John Backus').named_captures # => { "first_name" => "John", "last_name" => "Backus" }
 {% endhighlight %}
+
 Ruby 2.4 还增加了 `#values_at` 方法，用他可以生成一个只包含你想要的部分的数组：
+
 {% highlight ruby %}
 pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
 pattern.match('2016-02-01').values_at(:year, :month) # => ["2016", "02"]
 {% endhighlight %}
 
-# New Integer#digits method
+
+
+---
+
+# 新方法 Integer#digits
 {% highlight ruby %}
 123.digits                  # => [3, 2, 1]
 123.digits[0]               # => 3
@@ -93,13 +120,18 @@ pattern.match('2016-02-01').values_at(:year, :month) # => ["2016", "02"]
 # Ruby 2.3 你只能这样
 123.to_s.chars.map(&:to_i).reverse # => [3, 2, 1]
 {% endhighlight %}
-注意数组的0是最右边（个位上）的数字。
 
+注意数组的0是最右边（个位上）的数字。
 即使是非十进制的数字，也只需要传递一个参数，如下是16进制：
+
 {% highlight ruby %}
 0x7b.digits(16)                                # => [11, 7]
 0x7b.digits(16).map { |digit| digit.to_s(16) } # => ["b", "7"]
 {% endhighlight %}
+
+
+
+---
 
 # 改进 `Logger` 接口
 
@@ -180,8 +212,16 @@ config[:names] # => ["John", "Daniel", "Delmer"]
 {% endhighlight %}
 
 
+
+
+---
+
 # Array 也有了 `#min` 和 `#max`
 并且比 `Enumerable` 快一点（好吧。。）
+
+
+
+---
 
 # 精简了 Integers
 Ruby 2.4 中你不再需要管理众多的数字类型：
@@ -196,14 +236,40 @@ numerics # => [Complex, Rational, Bignum, Float, Fixnum, Integer, BigDecimal]
 numerics # => [Complex, Rational, Float, Integer, BigDecimal]
 {% endhighlight %}
 
+`Fixnum` 和 `Bignum` 现在全都指向 `Integer`
+
+{% highlight ruby %}
+Fixnum  # => Integer
+Bignum  # => Integer
+Integer # => Integer
+{% endhighlight %}
 
 
 
 
+---
+
+# :capacity 指定 String 的内存大小
+{% highlight ruby %}
+template  = String.new(capacity: 100_000)
+{% endhighlight %}
 
 
 
+---
 
+# Symbol 的`#match`与 String 表现不一致
 
+Ruby 2.3 的 Symbol#match 返回匹配的位置（index），而 String#match 返回值是 MatchData 。现在统一返回 MatchData 。
 
+# Ruby 2.3 behavior:
 
+{% highlight ruby %}
+'foo bar'.match(/^foo (\w+)$/)  # => #<MatchData "foo bar" 1:"bar">
+:'foo bar'.match(/^foo (\w+)$/) # => 0
+
+# Ruby 2.4 behavior:
+
+'foo bar'.match(/^foo (\w+)$/)  # => #<MatchData "foo bar" 1:"bar">
+:'foo bar'.match(/^foo (\w+)$/) # => #<MatchData "foo bar" 1:"bar">
+{% endhighlight %}
