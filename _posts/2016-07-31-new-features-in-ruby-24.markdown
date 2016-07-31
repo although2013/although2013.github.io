@@ -5,7 +5,27 @@ date:   2016-07-31 22:48:51
 categories: jekyll update
 ---
 
-本文翻译自 https://blog.blockscore.com/new-features-in-ruby-2-4
+本文翻译自 [blog.blockscore.com/new-features-in-ruby-2-4](https://blog.blockscore.com/new-features-in-ruby-2-4)
+
+
+# 
+
+本文介绍了Ruby 2.4 一些新特性：
+ - 新增 Regexp#match? 方法
+ - 新增 Enumerable#sum 方法
+ - Dir 和 File 的新方法 empty?
+ - 新方法 Regexp#named_captures
+ - 新方法 Integer#digits
+ - Logger 接口改进
+ - OptionParse语法改进
+ - Array 也有了 #min 和 #max
+ - 精简数字类型（Bignum，Fixnum）
+ - :capacity 指定新建字符串的内存大小
+ - 修改 Symbol 的 #match 返回值
+
+
+# 
+
 
 
 ---
@@ -262,9 +282,9 @@ template  = String.new(capacity: 100_000)
 
 Ruby 2.3 的 Symbol#match 返回匹配的位置（index），而 String#match 返回值是 MatchData 。现在统一返回 MatchData 。
 
+{% highlight ruby %}
 # Ruby 2.3 behavior:
 
-{% highlight ruby %}
 'foo bar'.match(/^foo (\w+)$/)  # => #<MatchData "foo bar" 1:"bar">
 :'foo bar'.match(/^foo (\w+)$/) # => 0
 
