@@ -8,7 +8,7 @@ categories: jekyll update
 本文翻译自 [blog.blockscore.com/new-features-in-ruby-2-4](https://blog.blockscore.com/new-features-in-ruby-2-4)
 
 
-# 
+===
 
 本文介绍了Ruby 2.4 一些新特性：  
  - 新增 Regexp#match? 方法  
@@ -24,11 +24,10 @@ categories: jekyll update
  - 修改 Symbol 的 #match 返回值  
 
 
-# 
 
 
 
----
+===
 
 # 超级快的 `Regexp#match?` 方法
 
