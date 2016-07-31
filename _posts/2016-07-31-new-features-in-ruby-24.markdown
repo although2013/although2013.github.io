@@ -10,18 +10,18 @@ categories: jekyll update
 
 # 
 
-本文介绍了Ruby 2.4 一些新特性：
- - 新增 Regexp#match? 方法
- - 新增 Enumerable#sum 方法
- - Dir 和 File 的新方法 empty?
- - 新方法 Regexp#named_captures
- - 新方法 Integer#digits
- - Logger 接口改进
- - OptionParse语法改进
- - Array 也有了 #min 和 #max
- - 精简数字类型（Bignum，Fixnum）
- - :capacity 指定新建字符串的内存大小
- - 修改 Symbol 的 #match 返回值
+本文介绍了Ruby 2.4 一些新特性：  
+ - 新增 Regexp#match? 方法  
+ - 新增 Enumerable#sum 方法  
+ - Dir 和 File 的新方法 empty?  
+ - 新方法 Regexp#named_captures  
+ - 新方法 Integer#digits  
+ - Logger 接口改进  
+ - OptionParse语法改进  
+ - Array 也有了 #min 和 #max  
+ - 精简数字类型（Bignum，Fixnum）  
+ - :capacity 指定新建字符串的内存大小  
+ - 修改 Symbol 的 #match 返回值  
 
 
 # 
@@ -175,6 +175,11 @@ logger2.info('This is logged')
 
 # >> I, [2016-07-17T23:45:30.571556 #19837]  INFO -- LOG2: This is logged
 {% endhighlight %}
+
+
+
+
+---
 
 # 改进 `OptionParse` 使得生成Hash的语法更加简洁
 Ruby 2.3 中，如果你希望把传入的参数都放入一个 Hash 中，你需要这样：
