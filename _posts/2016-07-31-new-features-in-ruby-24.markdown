@@ -10,24 +10,25 @@ categories: jekyll update
 
 ===
 
-本文介绍了Ruby 2.4 一些新特性：  
- - 新增 Regexp#match? 方法  
- - 新增 Enumerable#sum 方法  
- - Dir 和 File 的新方法 empty?  
- - 新方法 Regexp#named_captures  
- - 新方法 Integer#digits  
- - Logger 接口改进  
- - OptionParse语法改进  
- - Array 也有了 #min 和 #max  
- - 精简数字类型（Bignum，Fixnum）  
- - :capacity 指定新建字符串的内存大小  
- - 修改 Symbol 的 #match 返回值  
+# 本文介绍了Ruby 2.4 一些新特性：
+
+ - 新增 Regexp#match? 方法
+ - 新增 Enumerable#sum 方法
+ - Dir 和 File 的新方法 empty?
+ - 新方法 Regexp#named_captures
+ - 新方法 Integer#digits
+ - Logger 接口改进
+ - OptionParse语法改进
+ - Array 也有了 #min 和 #max
+ - 精简数字类型（Bignum，Fixnum）
+ - :capacity 指定新建字符串的内存大小
+ - 修改 Symbol 的 #match 返回值
 
 
 
 
 
-===
+---
 
 # 超级快的 `Regexp#match?` 方法
 
