@@ -93,12 +93,12 @@ openDb();
 {% endhighlight %}
 
 
-运行上面的短短几行代码后就创建好了 contacts，然后我们来添加一条数据：
+运行上面的短短几行代码后就创建好了 `contacts`，然后我们来添加一条数据：
 
 {% highlight javascript %}
 var request = db.transaction(["contacts"], "readwrite")
                 .objectStore("contacts")
-     .add({name: 'Ge Hao', user_id: '1'});
+                .add({name: 'Ge Hao', user_id: '1'});
 {% endhighlight %}
 
 
