@@ -23,7 +23,7 @@ document.cookie = "favorite_food=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; //删
 
 
 # Web storage
-Web storage 分为两种，session storage 和 local storage，都是存储键值对，所有的值会被转成 String，所以如果存储对象需要提前将对象转换成 JSON 等格式在存储。
+Web storage 分为两种，`session storage` 和 `local storage`，都是存储键值对，所有的值会被转成 String，所以如果存储对象需要提前将对象转换成 JSON 等格式在存储。
 
 Session storage 的访问限制为当前页面，多个标签页之间不能互相访问，刷新页面不会消失，但关闭标签页就会清空。
 
