@@ -7,10 +7,10 @@ categories: jekyll update
 
 # Cookie
 
-Cookie 通常被用来辨识多次请求是否由同一个用户发起，大小限制为4KB，在每次请求中都会带上，因此过多使用也可能造成性能问题。  
-Cookie可以设置访问域，可以实现一个顶级域名下多个子域名共享数据。  
+Cookie 通常被用来辨识多次请求是否由同一个用户发起，大小限制为 4KB，在每次请求中都会带上，因此过多使用也可能造成性能问题。  
+Cookie 可以设置访问域，可以实现一个顶级域名下多个子域名共享数据。  
 Cookie 可以设置 expire ，如果没有设置就是  session 级别，关闭浏览器后会清空（不是关闭 tab）。  
-另外cookie还可以设置 HTTPOnly，这会增强安全性，使XSS攻击成本更高。
+另外 Cookie 还可以设置 HTTPOnly，这会增强安全性，使 XSS 攻击成本更高。
 
 
 {% highlight javascript %}
@@ -21,11 +21,11 @@ document.cookie = "favorite_food=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; //删
 
 
 # Web storage
-Web storage 分为两种，session storage 和 local storage，都是存储键值对，所有的值会被转成string，所以如果存储对象需要提前将对象转换成JSON等格式在存储。
+Web storage 分为两种，session storage 和 local storage，都是存储键值对，所有的值会被转成 String，所以如果存储对象需要提前将对象转换成 JSON 等格式在存储。
 
-Session storage 的访问限制为当前页面，多个tab之间不能互相访问，刷新页面不会消失。
+Session storage 的访问限制为当前页面，多个 tab 之间不能互相访问，刷新页面不会消失。
 
-Local storage 的访问限制与前者不同，Local storage 可以在多个tab之间互相访问和修改。它会被永久保存，除了用户清除浏览器本地数据或用JS来清除。
+Local storage 的访问限制与前者不同，local storage 可以在多个 tab 之间互相访问和修改。它会被永久保存，除了用户清除浏览器本地数据或用JS来清除。
 
 Web storage 都不能手动设置访问域，只能访问当前域名下的数据，每个域名的存储大小一般限制为 5M 个字符（JS 使用的 UTF-16 每个字符占用两字节）。具体可以在 [dev-test.nemikor.com](http://dev-test.nemikor.com/web-storage/support-test/) 测试你的浏览器是否支持 web storage 以及存储大小的限制。
 
@@ -91,7 +91,7 @@ openDb();
 {% endhighlight %}
 
 
-运行上面的短短几行代码后就创建好了contacts，然后我们来添加一条数据：
+运行上面的短短几行代码后就创建好了 contacts，然后我们来添加一条数据：
 
 {% highlight javascript %}
 var request = db.transaction(["contacts"], "readwrite")
