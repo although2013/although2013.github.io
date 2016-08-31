@@ -7,12 +7,9 @@ categories: jekyll update
 
 # Cookie
 
-Cookie 通常被用来辨识多次请求是否由同一个用户发起，大小限制为4KB，在每次请求中都会带上，因此过多使用也可能造成性能问题。
-
-Cookie可以设置访问域，可以实现一个顶级域名下多个子域名共享数据。
-
-Cookie 可以设置 expire ，如果没有设置就是  session 级别，关闭浏览器后会清空（不是关闭 tab）。
-
+Cookie 通常被用来辨识多次请求是否由同一个用户发起，大小限制为4KB，在每次请求中都会带上，因此过多使用也可能造成性能问题。  
+Cookie可以设置访问域，可以实现一个顶级域名下多个子域名共享数据。  
+Cookie 可以设置 expire ，如果没有设置就是  session 级别，关闭浏览器后会清空（不是关闭 tab）。  
 另外cookie还可以设置 HTTPOnly，这会增强安全性，使XSS攻击成本更高。
 
 
@@ -139,8 +136,6 @@ request.onsuccess = function(event) {
 
 参考资料：
 
-[http://www.alloyteam.com/2012/04/sth-about-localstorage/](http://www.alloyteam.com/2012/04/sth-about-localstorage/)
-
-[https://segmentfault.com/a/1190000005927232](https://segmentfault.com/a/1190000005927232)
-
-mdn
+[http://www.alloyteam.com/2012/04/sth-about-localstorage/](http://www.alloyteam.com/2012/04/sth-about-localstorage/)  
+[https://segmentfault.com/a/1190000005927232](https://segmentfault.com/a/1190000005927232)  
+mdn  
