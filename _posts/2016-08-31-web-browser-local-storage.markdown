@@ -80,7 +80,7 @@ function openDb() {
     console.error("openDb:", evt.target.errorCode);
   };
 
-  // 定义结构数据
+  // 定义数据结构
   req.onupgradeneeded = function (evt) {
     var db = evt.currentTarget.result;
     var store = db.createObjectStore(DB_STORE_NAME, { keyPath: 'id', autoIncrement: true });
