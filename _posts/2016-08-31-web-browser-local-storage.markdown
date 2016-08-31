@@ -31,7 +31,8 @@ Local storage 的访问限制与前者不同，local storage 可以在多个标�
 
 Web storage 都不能手动设置访问域，只能访问当前域名下的数据，每个域名的存储大小一般限制为 5M 个字符（JS 使用的 UTF-16 每个字符占用两字节）。具体可以在 [dev-test.nemikor.com](http://dev-test.nemikor.com/web-storage/support-test/) 测试你的浏览器是否支持 web storage 以及存储大小的限制。
 
-除此之外，还可以通过 `StorageEvent` 来侦听 storage 的改变，可以影响所有打开的该网站的标签页，这里有个例子 [github.com/mdn/web-storage-demo](https://github.com/mdn/web-storage-demo) 但他的那个 live demo 好像有问题，没有引入 event.js，别的标签页不会立即改变，不过原理就是这样，可以在实现多个标签页之间通信。  
+除此之外，还可以通过 `StorageEvent` 来侦听 storage 的改变，可以影响所有打开的该网站的标签页，这里有个例子 [github.com/mdn/web-storage-demo](https://github.com/mdn/web-storage-demo)，但他的那个 live demo 好像有问题，没有引入 event.js，别的标签页不会立即改变，不过原理就是这样，可以在实现多个标签页之间通信。
+
 需要注意的是 `StorageEvent` 并不会在当前页面触发，如果有其他打开着的同域名的标签页，它们就会触发 storage 事件（即只有原始页面不触发）。
 
 Local storage 和 session storage 的 API 基本相同，这里就以 local storage 为例：
