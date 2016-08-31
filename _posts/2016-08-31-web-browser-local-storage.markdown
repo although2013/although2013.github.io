@@ -16,7 +16,7 @@ Cookie 可以设置 expire ，如果没有设置就是  session 级别，关闭�
 另外cookie还可以设置 HTTPOnly，这会增强安全性，使XSS攻击成本更高。
 
 
-{% highlight ruby %}
+{% highlight javascript %}
 allCookies = document.cookie;  //不能访问到 HTTPOnly 的值
 document.cookie = "favorite_food=tripe"; //添加cookie
 document.cookie = "favorite_food=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; //删除cookie
@@ -36,7 +36,7 @@ Web storage 都不能手动设置访问域，只能访问当前域名下的数�
 
 Local storage 和 session storage 的 API 基本相同，这里就以 local storage 为例：
 
-{% highlight ruby %}
+{% highlight javascript %}
 localStorage.setItem("username", "John");
 localStorage.getItem("username")
 
@@ -49,7 +49,7 @@ localStorage.clear()  // 清空
 
 判断浏览器是否支持 local storage
 
-{% highlight ruby %}
+{% highlight javascript %}
 window.localStorage && window.localStorage.getItem
 {% endhighlight %}
 
@@ -62,7 +62,7 @@ window.localStorage && window.localStorage.getItem
 在这里我们尝试来创建一个 contacts 的对象存储空间（objectStore），相当于关系型数据库的表，database 的名字就叫 dev 好了，DB_VERSION 是数据库版本号，在数据库第一次被打开时或者当指定的版本号高于当前被持久化的数据库的版本号时，会执行 onversionchange 回调（这里没提到） 。
 
 
-{% highlight ruby %}
+{% highlight javascript %}
 const DB_NAME = 'dev';
 const DB_VERSION = 1;
 const DB_STORE_NAME = 'contacts';
@@ -96,7 +96,7 @@ openDb();
 
 运行上面的短短几行代码后就创建好了contacts，然后我们来添加一条数据：
 
-{% highlight ruby %}
+{% highlight javascript %}
 var request = db.transaction(["contacts"], "readwrite")
                 .objectStore("contacts")
      .add({name: 'Ge Hao', user_id: '1'});
@@ -105,7 +105,7 @@ var request = db.transaction(["contacts"], "readwrite")
 
 由于异步的原因如果想要删除某条记录，就需要使用回调：
 
-{% highlight ruby %}
+{% highlight javascript %}
 // 这个函数返回 objectStore
 function store() {
   var tx = db.transaction('contacts', 'readwrite');
@@ -122,7 +122,7 @@ request.onsuccess = function(evt) {
 
 想要 update 一条数据可以使用 put ：
 
-{% highlight ruby %}
+{% highlight javascript %}
 request.onsuccess = function(event) {
   var data = event.target.result;
   data.name = 'yoyoyo';
