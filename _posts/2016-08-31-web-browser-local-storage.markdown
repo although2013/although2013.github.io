@@ -5,6 +5,8 @@ date:   2016-08-31 09:13:02
 categories: jekyll update
 ---
 
+本文将介绍几种将数据存储在用户浏览器的方法，即 Cookie, Web Storage 和 IndexedDB，并简单介绍其使用方法与适用情景。
+
 # Cookie
 
 Cookie 通常被用来辨识多次请求是否由同一个用户发起，大小限制为 4KB，在每次请求中都会带上，因此过多使用也可能造成性能问题。  
@@ -23,13 +25,13 @@ document.cookie = "favorite_food=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; //删
 # Web storage
 Web storage 分为两种，session storage 和 local storage，都是存储键值对，所有的值会被转成 String，所以如果存储对象需要提前将对象转换成 JSON 等格式在存储。
 
-Session storage 的访问限制为当前页面，多个 tab 之间不能互相访问，刷新页面不会消失。
+Session storage 的访问限制为当前页面，多个 tab 之间不能互相访问，刷新页面不会消失，但关闭 tab 就会清空。
 
 Local storage 的访问限制与前者不同，local storage 可以在多个 tab 之间互相访问和修改。它会被永久保存，除了用户清除浏览器本地数据或用JS来清除。
 
 Web storage 都不能手动设置访问域，只能访问当前域名下的数据，每个域名的存储大小一般限制为 5M 个字符（JS 使用的 UTF-16 每个字符占用两字节）。具体可以在 [dev-test.nemikor.com](http://dev-test.nemikor.com/web-storage/support-test/) 测试你的浏览器是否支持 web storage 以及存储大小的限制。
 
-除此之外，还可以通过 StorageEvent 来侦听 storage 的改变，这里有个例子 [github.com/mdn/web-storage-demo](https://github.com/mdn/web-storage-demo)。
+除此之外，还可以通过 `StorageEvent` 来侦听 storage 的改变，这里有个例子 [github.com/mdn/web-storage-demo](https://github.com/mdn/web-storage-demo)。
 
 Local storage 和 session storage 的 API 基本相同，这里就以 local storage 为例：
 
@@ -54,7 +56,7 @@ window.localStorage && window.localStorage.getItem
 
 # Web SQL 和 IndexedDB
 
-这两者堪称 web 存储中的航空母舰，当然使用方法也有一点复杂，Web SQL 已经不再积极开发，所以 IndexedDB 应该就代表了未来，可以在 [caniuse.com](caniuse.com) 看到两者兼容性的对比。两者理论上都没有存储大小的限制。
+这两者堪称 web 存储中的航空母舰，当然使用方法也有一点复杂，Web SQL 已经不再积极开发，所以 IndexedDB 应该就代表了未来，可以在 [caniuse.com](http://caniuse.com/#search=indexeddb) 看到两者兼容性的对比。两者理论上都没有存储大小的限制。
 
 在这里我们尝试来创建一个 `contacts` 的对象存储空间（`objectStore`），相当于关系型数据库的表，database 的名字就叫 dev 好了，`DB_VERSION` 是数据库版本号，用来判断是否需要升级当前已经持久化的数据库 。
 
@@ -133,7 +135,7 @@ request.onsuccess = function(event) {
 {% endhighlight %}
 
 
-更多的请前往 [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) 阅读，作为一个专职卖萌的后端工程师表示有点复杂。
+更多的请前往 [mozilla.org/Using_IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) 阅读，作为一个专职卖萌的后端工程师表示有点复杂。
 
 
 参考资料：
