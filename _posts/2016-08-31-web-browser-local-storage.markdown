@@ -54,9 +54,9 @@ window.localStorage && window.localStorage.getItem
 
 # Web SQL 和 IndexedDB
 
-这两者堪称 web 存储中的航空母舰，当然使用方法也有一点复杂，Web SQL 已经不再积极开发，所以 IndexedDB 应该就代表了未来，可以在 caniuse.com 看到两者兼容性的对比。两者理论上都没有存储大小的限制。
+这两者堪称 web 存储中的航空母舰，当然使用方法也有一点复杂，Web SQL 已经不再积极开发，所以 IndexedDB 应该就代表了未来，可以在 [caniuse.com](caniuse.com) 看到两者兼容性的对比。两者理论上都没有存储大小的限制。
 
-在这里我们尝试来创建一个 contacts 的对象存储空间（objectStore），相当于关系型数据库的表，database 的名字就叫 dev 好了，DB_VERSION 是数据库版本号，在数据库第一次被打开时或者当指定的版本号高于当前被持久化的数据库的版本号时，会执行 onversionchange 回调（这里没提到） 。
+在这里我们尝试来创建一个 `contacts` 的对象存储空间（`objectStore`），相当于关系型数据库的表，database 的名字就叫 dev 好了，`DB_VERSION` 是数据库版本号，用来判断是否需要升级当前已经持久化的数据库 。
 
 
 {% highlight javascript %}
@@ -78,6 +78,7 @@ function openDb() {
     console.error("openDb:", evt.target.errorCode);
   };
 
+  // 定义结构数据
   req.onupgradeneeded = function (evt) {
     var db = evt.currentTarget.result;
     var store = db.createObjectStore(DB_STORE_NAME, { keyPath: 'id', autoIncrement: true });
@@ -87,6 +88,7 @@ function openDb() {
   };
 };
 
+// 创建
 openDb();
 {% endhighlight %}
 
