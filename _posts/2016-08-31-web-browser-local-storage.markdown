@@ -37,14 +37,14 @@ Local storage 和 session storage 的 API 基本相同，这里就以 local stor
 
 {% highlight javascript %}
 localStorage.setItem("username", "John");
-localStorage.getItem("username")
+localStorage.getItem("username");
 
 var obj = {'a': 1, 'b': 2};
 localStorage.setItem('obj', JSON.stringify(obj));
 JSON.parse(localStorage.getItem('obj'));
 
-localStorage.removeItem('test') // 删除 item
-localStorage.clear()  // 清空
+localStorage.removeItem('test'); // 删除 item
+localStorage.clear();  // 清空
 {% endhighlight %}
 
 判断浏览器是否支持 local storage
