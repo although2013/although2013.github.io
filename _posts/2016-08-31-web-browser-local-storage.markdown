@@ -145,4 +145,5 @@ request.onsuccess = function(event) {
 
 [http://www.alloyteam.com/2012/04/sth-about-localstorage/](http://www.alloyteam.com/2012/04/sth-about-localstorage/)  
 [https://segmentfault.com/a/1190000005927232](https://segmentfault.com/a/1190000005927232)  
+[http://javascript.ruanyifeng.com/bom/webstorage.html](http://javascript.ruanyifeng.com/bom/webstorage.html)  
 mdn  
