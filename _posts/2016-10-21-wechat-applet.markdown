@@ -8,6 +8,7 @@ categories: jekyll update
 
 ![a]({{ site.url }}/images/wechat_applet_1.png)
 ![b]({{ site.url }}/images/wechat_applet_2.png)
+![b]({{ site.url }}/images/wechat_applet_3.png)
 
 ![gif]({{ site.url }}/images/wechat_applet.gif)
 
