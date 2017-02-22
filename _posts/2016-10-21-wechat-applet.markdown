@@ -1,9 +1,11 @@
 ---
 layout: post
-title:  "Wechat Applet"
+title:  "Wechat Applet Screenshot"
 date:   2016-10-21 11:58:26
 categories: jekyll update
 ---
+
+这只是一个截图的展示
 
 
 ![a]({{ site.url }}/images/wechat_applet_1.png)
