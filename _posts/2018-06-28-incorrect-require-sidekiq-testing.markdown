@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "一个单元测试的坑 Sidekiq Testing"
-date:   2018-06-28 13:29:00
+title:  "Incorrect require sidekiq testing"
+date:   2018-06-28 06:12:06
 categories: jekyll update
 ---
 
@@ -15,6 +15,7 @@ PaytimeExpiredWorker.perform_in(1800, id)
 在 `test_helper` 中我们 `require 'sidekiq/testing'` 这会默认使用 `Sidekiq::Testing.fake!` 它会使用 ruby Array 来作为队列运行 worker，原本应该30分钟后才执行的任务也被立即执行了，造成 order 状态被改成已过期，使测试失败。
 
 另外一个问题默认 fake 模式下，单个 test 执行却能够成功运行
+
 ```bash
   bin/rails test test/models/discount_code_test.rb:155
 ```

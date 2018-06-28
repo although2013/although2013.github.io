@@ -2,7 +2,7 @@
 title = ARGV[0]
 
 
-t = Time.now
+t = Time.now.utc
 
 name_1 = t.to_s[0..9]
 name_2 = title.split.map { |w| "-#{w}" }.join
