@@ -18,7 +18,7 @@ categories: jekyll update
 
 #### 1. 使用当前时间创建一个新的索引，导入数据
 
-{% highlight javascript %}
+{% highlight ruby %}
 @date = Time.now.strftime '%Y%m%d%H%M%S'
 @alias_name = "#{Product.index_name}_#{@date}"
 
@@ -31,7 +31,7 @@ Product.import(force: true, index: @alias_name, type: Product.document_type)
 #### 2. 将别名关联到刚才生成的索引上
 
 这里还要注意，如果之前没有使用过 alias 别名，那么你的索引名就是 `products`，应该将其删除。
-{% highlight javascript %}
+{% highlight ruby %}
 # 如果存在名为 products 的索引，则将其删除
 client.indices.delete index: Product.index_name rescue nil
 # 将别名 products 关联到索引 products_20180711172532 上去
@@ -41,7 +41,7 @@ client.indices.put_alias index: @alias_name, name: Product.index_name
 #### 3. 将之前关联的旧索引删除
 
 我们需要把 products 这个别名所关联的其他索引都删掉，不然搜索结果中会包含两个索引中的结果
-{% highlight javascript %}
+{% highlight ruby %}
 aliases = client.indices.get_alias(index: 'products').keys
 # 该方法对应 GET http://localhost:9200/products/_alias
 #
@@ -53,7 +53,7 @@ aliases = client.indices.get_alias(index: 'products').keys
 
 好了，这样就完成了整个索引重建工作，把这些结合起来的代码看起来应该就是下面这样：
 
-{% highlight javascript %}
+{% highlight ruby %}
 class Reindex
   def initialize(klass_name)
     raise 'unknow class name' unless klass_name
