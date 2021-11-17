@@ -15,18 +15,18 @@ categories: jekyll update
 3. 调用函数时把 `this` 设置为 `thisValue`，并传入 `argList`
 
 例如：
-```javascript
+{% highlight javascript %}
 function hello(thing) {
   console.log(this + " says hello " + thing);
 }
 
 hello.call("Yehuda", "world") //=> Yehuda says hello world
-```
+{% endhighlight %}
 
 # 函数的简单调用
 像上面这样每次都使用 `call` 来调用函数有点烦人，JavaScript允许我们直接使用括号 `hello("world")` 这样的语法。
 
-```javascript
+{% highlight javascript %}
 function hello(thing) {
   console.log("Hello " + thing);
 }
@@ -36,22 +36,25 @@ hello("world")
 
 // desugars to:
 hello.call(window, "world");
-```
+{% endhighlight %}
 
 但这个行为在ECMAScript 5的严格模式中有所不同[2]：
-```javascript
+
+{% highlight javascript %}
 // this:
 hello("world")
 
 // desugars to:
 hello.call(undefined, "world");
-```
+{% endhighlight %}
+
 > The short version is: **a function invocation like `fn(...args)` is the same as `fn.call(window [ES5-strict: undefined], ...args)`.**
 
 [2] 实际上是所有情况下都会传入 `undefined` ，但是在非严格模式时，函数会把这个值改为 `thisValue` 。
 
 # 成员函数
-```javascript
+
+{% highlight javascript %}
 var person = {
   name: "Brendan Eich",
   hello: function(thing) {
@@ -64,9 +67,11 @@ person.hello("world")
 
 // desugars to this:
 person.hello.call(person, "world");
-```
+{% endhighlight %}
+
 上面的 `hello` 是独立函数，再来看下面的动态添加函数到 `person` 对象上。
-```javascript
+
+{% highlight javascript %}
 function hello(thing) {
   console.log(this + " says hello " + thing);
 }
@@ -77,12 +82,13 @@ person.hello = hello;
 person.hello("world") // still desugars to person.hello.call(person, "world")
 
 hello("world") // "[object DOMWindow]world"
-```
+{% endhighlight %}
+
 这个时候 `hello` 的 `this` 会根据调用方法的不同而变化。
 
 # 使用 `Function.prototype.bind`
 
-```javascript
+{% highlight javascript %}
 var person = {
   name: "Brendan Eich",
   hello: function(thing) {
@@ -93,11 +99,13 @@ var person = {
 var boundHello = function(thing) { return person.hello.call(person, thing); }
 
 boundHello("world");
-```
+{% endhighlight %}
+
 这里我们调用的 `boundHello("world");` 会被 **脱糖** 成 `boundHello.call(window, "world")` （可以看上一个例子），但是我们使用 call 方法重新将 this 修改成了person，所以 console 中会打印出 `Brendan Eich says hello world` 。
 
 我们可以让这个技巧更加通用：
-```javascript
+
+{% highlight javascript %}
 var bind = function(func, thisValue) {
   return function() {
     return func.apply(thisValue, arguments);
@@ -106,7 +114,8 @@ var bind = function(func, thisValue) {
 
 var boundHello = bind(person.hello, person);
 boundHello("world") // "Brendan Eich says hello world"
-```
+{% endhighlight %}
+
 让我们来理解这段代码，
 1. arguments 是一个类似 Array（但不是 Array）的参数列表，包含所有传入的参数。
 2. apply 和 call 基本相同，他可以接受参数列表（Array-like）而不需要一个一个列出来
@@ -114,12 +123,14 @@ boundHello("world") // "Brendan Eich says hello world"
 
 因为这是一个有点常见的习惯用法，所以 ES5 引入了 `bind` 在所有的 `Function` 对象上，来实现下面的用法
 
-```javascript
+{% highlight javascript %}
 var boundHello = person.hello.bind(person);
 boundHello("world") // "Brendan Eich says hello world"
-```
+{% endhighlight %}
+
 例如：
-```javascript
+
+{% highlight javascript %}
 var person = {
   name: "Alex Russell",
   hello: function() { console.log(this.name + " says hello world"); }
@@ -128,4 +139,4 @@ var person = {
 $("#some-div").click(person.hello.bind(person));
 
 // when the div is clicked, "Alex Russell says hello world" is printed
-```
+{% endhighlight %}
